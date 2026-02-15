@@ -4,7 +4,7 @@ const userClaimed = {};
 const validVoucher = "2026MAXWIN";
 const historyContainer = document.getElementById('historyContainer');
 
-// Generate 20 riwayat awal acak (lebih formal)
+// 20 User ID acak + nominal IDR
 let historyData = [
   {userId:"RJP84921", freebet:12500},
   {userId:"MAX77103", freebet:25000},
@@ -28,17 +28,19 @@ let historyData = [
   {userId:"VIP77205", freebet:60000}
 ];
 
+// Render riwayat awal
 function renderHistory(){
-  historyContainer.innerHTML="";
+  historyContainer.innerHTML = "";
   historyData.forEach(item=>{
     const div = document.createElement("div");
-    div.className="history-item";
+    div.className = "history-item";
     div.innerHTML = `<span>${item.userId}</span><span>IDR ${item.freebet.toLocaleString('id-ID')}</span>`;
     historyContainer.appendChild(div);
   });
 }
 renderHistory();
 
+// Claim Freebet
 window.claimFreebet = function(){
   const userId = document.getElementById('userId').value.trim();
   const voucher = document.getElementById('voucher').value.trim();
@@ -62,7 +64,7 @@ window.claimFreebet = function(){
     return;
   }
 
-  // tampilkan progress bar sebelum popup
+  // tampilkan progress
   progressContainer.style.display="block";
   progressBar.style.width="0%";
   messageEl.textContent="";
